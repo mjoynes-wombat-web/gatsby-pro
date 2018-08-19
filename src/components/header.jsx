@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Link from 'gatsby-link';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
@@ -6,8 +6,14 @@ import Img from 'gatsby-image';
 import logo from '../images/logo.svg';
 // Global styles
 
-const Header = ({ data }) => (
-  <div className="header">
+const Header = ({ data: { background }, location }) => (
+  <div
+    className={`${
+      location.pathname === '/'
+        ? 'open'
+        : 'closed'}
+      header`}
+  >
     <style jsx global>
       {`
       .header{
@@ -15,6 +21,13 @@ const Header = ({ data }) => (
         overflow: hidden;
         position: relative;
         height: 60vh;
+        transition: height 0.3s;
+        &.open {
+          height: 60vh;
+        }
+        &.closed {
+          height: 20vh;
+        }
         .text-wrapper {
           margin: 0 auto 1.45rem auto;
           max-width: 960px;
@@ -67,19 +80,8 @@ const Header = ({ data }) => (
         </ul>
       </nav>
     </div>
-    <Img className="billboard" sizes={data.background.sizes} />
+    <Img className="billboard" sizes={background.sizes} />
   </div>
 );
 
 export default Header;
-
-Header.propTypes = {
-  data: PropTypes.shape({
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        title: PropTypes.string,
-        desc: PropTypes.string,
-      }),
-    }),
-  }).isRequired,
-};
