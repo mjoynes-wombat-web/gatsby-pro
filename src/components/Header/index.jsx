@@ -22,6 +22,7 @@ const Header = ({ data: { background }, location }) => (
         position: relative;
         height: 60vh;
         transition: height 0.3s;
+
         &.open {
           height: 60vh;
         }
@@ -34,6 +35,7 @@ const Header = ({ data: { background }, location }) => (
           padding: 1.45rem 1.0875rem;
           position: relative;
           z-index: 2;
+
           h1 {
             a {
               color: white;
@@ -55,6 +57,7 @@ const Header = ({ data: { background }, location }) => (
           top: 0;
           width: 100%;
           height: 100%;
+          opacity: 0.3;
         }
       }
       `}
