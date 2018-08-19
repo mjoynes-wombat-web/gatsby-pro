@@ -1,6 +1,6 @@
 ---
-title: "Welcome to the new blog."
-date: "2018-02-21"
+title: "Our Second Post."
+date: "2018-02-20"
 ---
 
 <!-- start-excerpt -->
