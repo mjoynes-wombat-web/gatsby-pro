@@ -15,7 +15,7 @@ const Layout = ({ children, data }) => (
         { name: 'keywords', content: 'sample, something' },
       ]}
     />
-    <Header siteTitle={data.site.siteMetadata.title} />
+    <Header data={data} siteTitle={data.site.siteMetadata.title} />
     <div
       style={{
         margin: '0 auto',
@@ -31,16 +31,30 @@ const Layout = ({ children, data }) => (
 
 Layout.propTypes = {
   children: PropTypes.func.isRequired,
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string,
+        desc: PropTypes.string,
+      }),
+    }),
+  }).isRequired,
 };
 
 export default Layout;
 
 export const query = graphql`
-  query SiteTitleQuery {
-    site {
-      siteMetadata {
-        title
-      }
+query LayoutQuery {
+  site {
+    siteMetadata {
+      title
+      desc
     }
   }
+  background: imageSharp(id: {regex: "/bg.jpeg/"}) {
+    sizes(maxWidth: 1240) {
+      ...GatsbyImageSharpSizes
+    }
+  }
+}
 `;
