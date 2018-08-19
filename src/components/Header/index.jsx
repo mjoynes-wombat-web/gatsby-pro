@@ -3,8 +3,9 @@ import Link from 'gatsby-link';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 
-import logo from '../images/logo.svg';
-// Global styles
+import logo from '../../images/logo.svg';
+
+import HeaderNav from './HeaderNav';
 
 const Header = ({ data: { background }, location }) => (
   <div
@@ -21,6 +22,7 @@ const Header = ({ data: { background }, location }) => (
         overflow: hidden;
         position: relative;
         height: 60vh;
+        min-height: calc(80px + 2.9rem);
         transition: height 0.3s;
 
         &.open {
@@ -35,6 +37,8 @@ const Header = ({ data: { background }, location }) => (
           padding: 1.45rem 1.0875rem;
           position: relative;
           z-index: 2;
+          display: flex;
+          justify-content: space-between;
 
           h1 {
             a {
@@ -68,20 +72,7 @@ const Header = ({ data: { background }, location }) => (
           <img src={logo} alt="Level Up Tuts Logo" />
         </Link>
       </h1>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link to="/about">
-              About
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      <HeaderNav />
     </div>
     <Img className="billboard" sizes={background.sizes} />
   </div>
