@@ -2,14 +2,12 @@ import React from 'react';
 import graphql from 'graphql';
 import PropTypes from 'prop-types';
 
-const PostListing = () => <div>Hello</div>;
+import PostListing from '../components/Posts/PostListing';
 
 const IndexPage = ({ data }) => (
   <div>
-    <h1>Hi people</h1>
-    <p>{data.site.siteMetadata.title}</p>
-    <p>{data.site.siteMetadata.desc}</p>
-    {data.allMarkdownRemark.edges.map(({ node }) => <PostListing post={node} />)}
+    <h1>Posts</h1>
+    {data.allMarkdownRemark.edges.map(({ node }) => <PostListing key={node.id} post={node} />)}
   </div>
 );
 
@@ -37,11 +35,16 @@ query SiteMeta {
   allMarkdownRemark {
     edges {
       node {
+        id
         frontmatter {
           title
-          date(formatString: "MMMM DD YYYY")
+          date(formatString: "MMMM DD, YYYY")
+        }
+        fields {
+          slug
         }
         html
+        excerpt(pruneLength: 280)
       }
     }
   }
