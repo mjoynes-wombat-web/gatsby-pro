@@ -1,5 +1,6 @@
 backend:
-  name: test-repo
+  name: github
+  repo: ssmith-wombatweb/gatsby-pro
 
 media_folder: static/assets
 
