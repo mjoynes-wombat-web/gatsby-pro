@@ -25,5 +25,12 @@ module.exports = {
       },
     },
     'gatsby-plugin-netlify-cms',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'img',
+        path: `${__dirname}/static/assets`,
+      },
+    },
   ],
 };
