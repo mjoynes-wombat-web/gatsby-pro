@@ -24,5 +24,6 @@ module.exports = {
         path: `${__dirname}/src/`,
       },
     },
+    'gatsby-plugin-netlify-cms',
   ],
 };
